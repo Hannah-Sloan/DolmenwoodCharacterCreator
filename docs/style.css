@@ -73,6 +73,11 @@ p, table, th, td, li, ul
     margin: 0;
 }
 
+td
+{
+    line-height: 105%;
+}
+
 p, ul
 {
     margin-bottom: 1.2em;
