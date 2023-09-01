@@ -20,49 +20,49 @@
                     <div class="container">
                         <h2>Roll Ability Scores</h2>
                         <button type="button" onclick="rollAbilityScores()">Roll Ability Scores</button><p></p>
-                        <button disabled id = "reset" type="button" onclick="rollAbilityScores()">reset</button>
+                        <button disabled id = "reset" type="button" onclick="resetAdjustAbilityScores()">reset</button>
                         <div id="abilityScoreTool"> 
                             <div class = abilityScoreDiv>
-                                <button disabled id = "strength+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "strength-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(0)">-</button>
                                 <p class="abilityScoreName">Strength</p>
-                                <p id="strengthAbilityScore" class="abilityScore">16</p>
-                                <p id ="strengthMod" class = "mod">+1</p>
-                                <button disabled id = "strength-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="strengthAbilityScore" class="abilityScore">--</p>
+                                <p id ="strengthMod" class = "mod">--</p>
+                                <button disabled id = "strength+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(0)">+</button>
                             </div>
                             <div class = abilityScoreDiv>
-                                <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(1)">-</button>
                                 <p class="abilityScoreName">Dexterity</p>
-                                <p id="dexterityAbilityScore" class="abilityScore">16</p>
-                                <p id ="dexterityMod" class = "mod">+1</p>
-                                <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="dexterityAbilityScore" class="abilityScore">--</p>
+                                <p id ="dexterityMod" class = "mod">--</p>
+                                <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(1)">+</button>
                             </div>
                             <div class = abilityScoreDiv>
-                                <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(2)">-</button>
                                 <p class="abilityScoreName">Constitution</p>
-                                <p id="constitutionAbilityScore" class="abilityScore">16</p>
-                                <p id ="constitutionMod" class = "mod">+1</p>
-                                <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="constitutionAbilityScore" class="abilityScore">--</p>
+                                <p id ="constitutionMod" class = "mod">--</p>
+                                <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(2)">+</button>
                             </div>
                             <div class = abilityScoreDiv>
-                                <button disabled id = "intelligence+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "intelligence-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(3)">-</button>
                                 <p class="abilityScoreName">Intelligence</p>
-                                <p id="intelligenceAbilityScore" class="abilityScore">16</p>
-                                <p id ="intelligenceMod" class = "mod">+1</p>
-                                <button disabled id = "intelligence-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="intelligenceAbilityScore" class="abilityScore">--</p>
+                                <p id ="intelligenceMod" class = "mod">--</p>
+                                <button disabled id = "intelligence+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(3)">+</button>
                             </div>
                             <div class = abilityScoreDiv>
-                                <button disabled id = "wisdom+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "wisdom-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(4)">-</button>
                                 <p class="abilityScoreName">Wisdom</p>
-                                <p id="wisdomAbilityScore" class="abilityScore">16</p>
-                                <p id ="wisdomMod" class = "mod">+1</p>
-                                <button disabled id = "wisdom-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="wisdomAbilityScore" class="abilityScore">--</p>
+                                <p id ="wisdomMod" class = "mod">--</p>
+                                <button disabled id = "wisdom+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(4)">+</button>
                             </div>
                             <div class = abilityScoreDiv>
-                                <button disabled id = "charisma+" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">-</button>
+                                <button disabled id = "charisma-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(5)">-</button>
                                 <p class="abilityScoreName">Charisma</p>
-                                <p id="charismaAbilityScore" class="abilityScore">16</p>
-                                <p id ="charismaMod" class = "mod">+1</p>
-                                <button disabled id = "charisma-" class="adjustAbilityButton" type="button" onclick="rollAbilityScores()">+</button>
+                                <p id="charismaAbilityScore" class="abilityScore">--</p>
+                                <p id ="charismaMod" class = "mod">--</p>
+                                <button disabled id = "charisma+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(5)">+</button>
                             </div>
                         </div>
                         <h3 id = "subparCharacters">Subpar Characters (Optional Rule) <button disabled type="button" onclick="rollAbilityScores()">Reroll</button></h3>
@@ -124,7 +124,7 @@
                         </ul>
                     <h2>Choose Alignment</h2>
                     <p>Alignment: Lawful, Neutral, Chaotic</p>
-                    <p id="alignmentWarning">As servants of the Church, clerics/friars must be Lawful or Neutral.</p>
+                    <p id="alignmentWarning"></p>
                     </div>
                 </div>
             </div>
@@ -138,8 +138,8 @@
                             For example, fighters rely on Strength and magicians rely on Intelligence. 
                             A character's score in their Prime Abilities affects how quickly they gain Experience Points.<br>
                             <b>Below 9:</b> A character who has 8 or lower in a Prime Ability suffers a -10% penalty to earned XP.<br>
-                            <b>Above 12:</b> A character who has 13 or higher in all Prime Abilities gains a +5% bonus to earned XP. 
-                            If all Prime Abilities are 16 or higher, the character gains a +10% bonus to earned XP.
+                            <b>Above 12:</b> A character who has 13 or higher in all Prime Abilities gains a +5% bonus to earned XP. <br>
+                            <b>Above 15:</b> If all Prime Abilities are 16 or higher, the character gains a +10% bonus to earned XP.
                         </p>
                         <table>
                             <caption> Class Prime Abilities </caption>

@@ -74,7 +74,13 @@ class AbilityScores
             case 18:
                 return +3;
         }
+        if(abilityScore >= 19) return +3;
         return 999;
+    }
+
+    static copy(toCopy)
+    {
+        return new AbilityScores(toCopy.strength, toCopy.dexterity, toCopy.constitution, toCopy.intelligence, toCopy.wisdom, toCopy.charisma);
     }
 }
 
@@ -121,29 +127,237 @@ class CharacterClass
     }
 }
 
+let kindredMode = false;
+let currentCharClass = -1;
+let currentScores = null;
+let originalScores = null;
+let abilityToIncrease = -1;
+
+//Disable all +,- buttons
+for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+{
+    document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "+").disabled = true; 
+    document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "-").disabled = true; 
+}
+
+//Disable reset button
+document.getElementById("reset").disabled = true; 
+
 function rollAbilityScores()
 {
     var scores = new AbilityScores(roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6());
+    currentScores = scores;
+    originalScores = null;
+
+    document.getElementById("reset").disabled = true; 
 
     populateAbilityScores(scores);
-    populateClasses();
 
-    if(true /*If character is 'subpar'*/)
-        document.getElementById("subparCharacters").innerHTML = "Subpar Characters (Optional Rule) <button type=\"button\" onclick=\"rollAbilityScores()\">Reroll</button>";
+    let underSeven = numberOfAbilityScoresUnderSeven(scores);
+
+    if(underSeven > 1 || allUnderNine(scores))
+        document.getElementById("subparCharacters").innerHTML = "!Subpar Characters (Optional Rule) <button type=\"button\" onclick=\"rollAbilityScores()\">Reroll</button>";
     else
         document.getElementById("subparCharacters").innerHTML = "Subpar Characters (Optional Rule) <button disabled type=\"button\" onclick=\"rollAbilityScores()\">Reroll</button>";
 
-    if(true /*are cleric*/)
+    populateClasses(scores);
+}
+
+defaultBorderStyle = "";
+defaultBorderColor = "";
+defualtBorderWidth = "";
+function selectClass(charClass)
+{
+    if(charClass != currentCharClass)
+    {
+        resetAdjustAbilityScores();
+
+        const id = CharacterClass.characterClassName(charClass).toLocaleLowerCase() + "Button";
+        defaultBorderStyle = document.getElementById(id).style.borderStyle;
+        defaultBorderColor = document.getElementById(id).style.borderColor;
+        defualtBorderWidth = document.getElementById(id).style.borderWidth;
+    }
+
+    if(currentCharClass != -1)
+    {
+        const id = CharacterClass.characterClassName(currentCharClass).toLocaleLowerCase() + "Button";
+        document.getElementById(id).style.borderStyle = defaultBorderStyle;
+        document.getElementById(id).style.borderColor = defaultBorderColor;
+        document.getElementById(id).style.borderWidth = defualtBorderWidth;
+    }
+
+    currentCharClass = charClass;
+    const id = CharacterClass.characterClassName(charClass).toLocaleLowerCase() + "Button";
+    document.getElementById(id).style.borderStyle = "solid";
+    document.getElementById(id).style.borderColor = "#d54135";
+    document.getElementById(id).style.borderWidth = "2px";
+
+    if(charClass == CharacterClass.Cleric)
         document.getElementById("alignmentWarning").innerHTML = "<p>As servants of the Church, clerics must be Lawful or Neutral.</p>";
-    else if(false /*are friar*/)
+    else if(charClass == CharacterClass.Friar)
         document.getElementById("alignmentWarning").innerHTML = "<p>As servants of the Church, friars must be Lawful or Neutral.</p>"
     else
         document.getElementById("alignmentWarning").innerHTML = "";
+
+    activatePrimePluses(charClass);
+
+    populateKindred();
 }
 
-function todoAdjustAbilityScores(){}
+function activatePrimePluses(charClass)
+{
+    let primeAbilitiesArray = primeAbilities(charClass);
+    let eligibleAbilities = [];
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    {
+        if(!primeAbilitiesArray.includes(ability) && currentScores.abilityScore(ability) > 10) eligibleAbilities.push(ability);
+    }
+    if(eligibleAbilities.length != 0)
+    {
+        for (let i = 0; i < primeAbilitiesArray.length; i++) 
+        {
+            document.getElementById(AbilityScores.abilityScoreName(primeAbilitiesArray[i]).toLowerCase() + "+").disabled = false; 
+        }
+    }
+}
 
-function todoResetAdjustAbilityScores(){}
+function adjustAbilityScorePlus(abilityPlus)
+{
+    document.getElementById("reset").disabled = true; 
+
+    abilityToIncrease = abilityPlus;
+
+    //Disable all +s
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    {
+        document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "+").disabled = true; 
+    }
+
+    let primeAbilitiesArray = primeAbilities(currentCharClass);
+    let eligibleAbilities = [];
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    {
+        if(!primeAbilitiesArray.includes(ability) && currentScores.abilityScore(ability) > 10) eligibleAbilities.push(ability);
+    }
+
+    //Enable all -s
+    for (let i = 0; i < eligibleAbilities.length; i++) 
+    {
+        let eligibleAbility = eligibleAbilities[i];
+        document.getElementById(AbilityScores.abilityScoreName(eligibleAbility).toLowerCase() + "-").disabled = false; 
+    }
+}
+
+function adjustAbilityScoreMinus(abilityMinus)
+{
+    originalScores = AbilityScores.copy(currentScores);
+    
+    switch(abilityMinus)
+    {
+        case AbilityScores.Strength: 
+            currentScores.strength -= 2;
+            break;
+        case AbilityScores.Dexterity: 
+            currentScores.dexterity -= 2;
+            break;
+        case AbilityScores.Constitution: 
+            currentScores.constitution -= 2;
+            break;
+        case AbilityScores.Intelligence: 
+            currentScores.intelligence -= 2;
+            break;
+        case AbilityScores.Wisdom: 
+            currentScores.wisdom -= 2;
+            break;
+        case AbilityScores.Charisma: 
+            currentScores.charisma -= 2;
+            break;
+    }
+    
+    switch(abilityToIncrease)
+    {
+        case AbilityScores.Strength: 
+            currentScores.strength+=1;
+            break;
+        case AbilityScores.Dexterity: 
+            currentScores.dexterity+=1;
+            break;
+        case AbilityScores.Constitution: 
+            currentScores.constitution+=1;
+            break;
+        case AbilityScores.Intelligence: 
+            currentScores.intelligence+=1;
+            break;
+        case AbilityScores.Wisdom: 
+            currentScores.wisdom+=1;
+            break;
+        case AbilityScores.Charisma: 
+            currentScores.charisma+=1;
+            break;
+    }
+
+    abilityToIncrease = -1;
+
+    populateAbilityScores(currentScores);
+    let keepClass = currentCharClass;
+    populateClasses(currentScores);
+    currentCharClass = keepClass;
+    selectClass(currentCharClass)
+    document.getElementById("reset").disabled = false; 
+
+    activatePrimePluses(currentCharClass);
+
+    //Disable all - buttons
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    { 
+        document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "-").disabled = true; 
+    }
+}
+
+function allUnderNine(scores)
+{
+    for (let i = 0; i < AbilityScores.AbilityScoresCount; i++) 
+    {
+        if(scores.abilityScore(i) > 8) return false;
+    }
+    return true;
+}
+
+function numberOfAbilityScoresUnderSeven(scores)
+{
+    let underSeven = 0;
+    for (let i = 0; i < AbilityScores.AbilityScoresCount; i++) 
+    {
+        if(scores.abilityScore(i) <= 6) underSeven++;
+    }
+    return underSeven;
+}
+
+function resetAdjustAbilityScores()
+{
+    if(originalScores != null)
+    {
+        currentScores = AbilityScores.copy(originalScores);
+        originalScores = null;
+        populateAbilityScores(currentScores);
+        let keepClass = currentCharClass;
+        populateClasses(currentScores);
+        currentCharClass = keepClass;
+        if(currentCharClass != -1)
+            selectClass(currentCharClass);
+    }
+
+    document.getElementById("reset").disabled = true; 
+
+    if(currentCharClass != -1)
+        activatePrimePluses(currentCharClass);
+
+    //Disable all - buttons
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    { 
+        document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "-").disabled = true; 
+    }
+}
 
 function populateAbilityScores(scores)
 {
@@ -162,12 +376,58 @@ function populateAbilityScore(scores, score)
     document.getElementById(scoreLower+"Mod").innerHTML = plus + AbilityScores.modifier(scores.abilityScore(score))
 }
 
-function populateClasses() 
+function populateClasses(scores) 
 {
-    document.getElementById("+10xpList").innerHTML = "<li>Fighter</li><li>Cleric</li>";
-    document.getElementById("+5xpList").innerHTML = "<li>Fighter</li><li><button type=\"button\" onclick=\"populateKindred()\">Cleric</button> </li>";
-    document.getElementById("0xpList").innerHTML = "<li>Fighter</li><li>Cleric</li>";
-    document.getElementById("-10xpList").innerHTML = "<li>Fighter</li><li>Cleric</li>";
+    currentCharClass = -1;
+
+    const plus10 = [];
+    const plus5 = [];
+    const noBonus = [];
+    const minus10 = [];
+
+    for (let charClass = 0; charClass < CharacterClass.CharacterKindredClassCount; charClass++) 
+    {
+        if(charClass > CharacterClass.CharacterClassCount-1 && !kindredMode) continue;
+
+        let classPrimeAbilities = primeAbilities(charClass);
+        let tenPercentClass = true;
+        let fivePercentClass = true;
+        let noBonusClass = true;
+        for (let i = 0; i < classPrimeAbilities.length; i++) 
+        {
+            primeAbility = classPrimeAbilities[i];
+            if(scores.abilityScore(primeAbility) < 16) tenPercentClass = false
+            if(scores.abilityScore(primeAbility) < 13) fivePercentClass = false
+            if(scores.abilityScore(primeAbility) < 9) noBonusClass = false
+        }
+        if(tenPercentClass) plus10.push(charClass);
+        else if (fivePercentClass) plus5.push(charClass);
+        else if (noBonusClass) noBonus.push(charClass);
+        else minus10.push(charClass);
+    }
+
+    populateXPList("+10xpList", plus10);
+    populateXPList("+5xpList", plus5);
+    populateXPList("0xpList", noBonus);
+    populateXPList("-10xpList", minus10);
+}
+
+function populateXPList(id, list)
+{
+    let listString = "";
+    
+    for (let i = 0; i < list.length; i++)
+    {
+        let charClass = list[i];
+        listString += ("<li><button class = \"classButton\""
+        + "id = \"" + CharacterClass.characterClassName(charClass).toLowerCase() + "Button\" "
+        + "type=\"button\" onclick="
+        + "\"selectClass(" + charClass + ")\">"
+        + CharacterClass.characterClassName(charClass)
+        + "</button>"
+        + "</li>");
+    }
+    document.getElementById(id).innerHTML = listString;
 }
 
 function populateKindred() 
@@ -200,7 +460,7 @@ function getRndInteger(min, max)
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-function PrimeAbilities(lookupClass)
+function primeAbilities(lookupClass)
 {
     switch (lookupClass)
     {
@@ -233,5 +493,5 @@ function PrimeAbilities(lookupClass)
         case CharacterClass.Woodgrue:
             return  [ AbilityScores.Charisma, AbilityScores.Dexterity ];
     }
-    return -1
+    return [-1]
 }
