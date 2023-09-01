@@ -78,6 +78,39 @@ p, ul
     margin-bottom: 1.2em;
 }
 
+.mod, .abilityScore, .abilityScoreName
+{
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.abilityScore, .mod
+{
+    border-style: solid;
+    border-color: var(--textColor);
+    border-width: 2px;
+    padding-left: .1em;
+    padding-right: .1em;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.mod
+{
+    color:grey;
+    border-color:grey;
+    padding-left: .1em;
+    padding-right: .1em;
+    margin-left: 0;
+    margin-right: .5em;
+}
+
+.adjustAbilityButton
+{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
 br
 {
     margin-bottom: .4em;
@@ -107,10 +140,12 @@ table
 
 caption
 {
-    font-weight: bold;
+    font-family: "Book Antiqua Bold";
+    font-weight: normal;
     text-transform: uppercase;
     background-color: var(--tableHeadingColor);
     color: white;
+    padding: .2em;
 }
 
 tr:nth-child(4n), tr:nth-child(4n - 1) 
@@ -124,7 +159,13 @@ tr:nth-child(4n), tr:nth-child(4n - 1)
     justify-content:space-evenly;
 }
 
-.container
+.abilityScoreDiv
+{
+    display: flex;
+    width: 2px; 
+}
+
+.container, #abilityScoreTool
 {
     width: 100%;
     padding: 1em;
