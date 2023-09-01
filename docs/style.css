@@ -1,1 +1,131 @@
-/* Style sheet goes here */
+:root {
+    --head1Color: #d54135;
+    --head2Color: #dd6d55;
+    --head3Color: #643122;
+    --textColor: #231f20;
+    --tableHeadingColor: #865e4a;
+    --tableHighlightColor: #e8dfd9;
+}
+
+@font-face {
+    font-family: "Winona";
+    src: url('fonts/Winona.ttf');
+}
+
+@font-face {
+    font-family: "Alverata-Bold";
+    src: url('fonts/Alverata-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Book Antiqua";
+    src: url('fonts/Book Antiqua.ttf');
+}
+
+@font-face {
+    font-family: "Book Antiqua Bold";
+    src: url('fonts/Book Antiqua Bold.ttf');
+}
+
+h1
+{
+    font-family: "Winona";
+    font-weight: normal;
+    color: var(--head1Color);
+    text-align: center;
+    font-size: 4em;
+    margin: 0;
+    line-height: 75%;
+}
+
+hr
+{
+    color: var(--head2Color);
+}
+
+h2
+{
+    font-family: "Alverata-Bold";
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    color: var(--head2Color);
+    margin: 0;
+}
+
+h3
+{
+    font-family: "Book Antiqua Bold";
+    font-weight: normal;
+    color: var(--head3Color);
+    margin: 0;
+}
+
+p, table, th, td, li, ul
+{
+    font-family: "Book Antiqua";
+    font-size: 1em;
+    letter-spacing: -.05em;
+    word-spacing: -.03em;
+    line-height: 96%;
+    color: var(--textColor);
+    text-align: justify;
+    margin: 0;
+}
+
+p, ul
+{
+    margin-bottom: 1.2em;
+}
+
+br
+{
+    margin-bottom: .4em;
+}
+
+b
+{
+    font-family: "Book Antiqua Bold";
+    font-weight: normal;
+}
+
+table, th, td 
+{
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th
+{
+    border-bottom: 1px solid var(--tableHeadingColor);    
+}
+
+table
+{
+    width: 100%;
+}
+
+caption
+{
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--tableHeadingColor);
+    color: white;
+}
+
+tr:nth-child(4n), tr:nth-child(4n - 1) 
+{
+    background-color: var(--tableHighlightColor);
+}
+
+.pageSplit
+{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.container
+{
+    width: 100%;
+    padding: 1em;
+}
