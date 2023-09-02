@@ -143,6 +143,16 @@ for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++)
 //Disable reset button
 document.getElementById("reset").disabled = true; 
 
+//Reset the alignment form
+document.getElementById("alignmentForm").reset();
+
+const alignmentOff = "";
+const alignmentOn = "<input type=\"radio\" id=\"lawful\" name=\"radio_alignment\" value=\"Lawful\"><label for=\"lawful\">Lawful</label><br><input type=\"radio\" id=\"neutral\" name=\"radio_alignment\" value=\"Neutral\"><label for=\"neutral\">Neutral</label><br><input type=\"radio\" id=\"chaotic\" name=\"radio_alignment\" value=\"Chaotic\"><label for=\"chaotic\">Chaotic</label><br>"
+const alignmentNoChaos =  "<input type=\"radio\" id=\"lawful\" name=\"radio_alignment\" value=\"Lawful\"><label for=\"lawful\">Lawful</label><br><input type=\"radio\" id=\"neutral\" name=\"radio_alignment\" value=\"Neutral\"><label for=\"neutral\">Neutral</label><br>"
+
+document.getElementById("alignmentForm").innerHTML = alignmentOff;
+document.getElementById("alignmentWarning").innerHTML = "<p></p>";
+
 function rollAbilityScores()
 {
     resetAdjustAbilityScores();
@@ -151,6 +161,9 @@ function rollAbilityScores()
     { 
         document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "+").disabled = true; 
     }
+    document.getElementById("alignmentForm").innerHTML = alignmentOff;
+    document.getElementById("alignmentWarning").innerHTML = "<p></p>";
+
     var scores = new AbilityScores(roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6());
     currentScores = scores;
     originalScores = null;
@@ -199,11 +212,20 @@ function selectClass(charClass)
     document.getElementById(id).style.borderWidth = "2px";
 
     if(charClass == CharacterClass.Cleric)
+    {
         document.getElementById("alignmentWarning").innerHTML = "<p>As servants of the Church, clerics must be Lawful or Neutral.</p>";
+        document.getElementById("alignmentForm").innerHTML = alignmentNoChaos;
+    }
     else if(charClass == CharacterClass.Friar)
+    {
         document.getElementById("alignmentWarning").innerHTML = "<p>As servants of the Church, friars must be Lawful or Neutral.</p>"
+        document.getElementById("alignmentForm").innerHTML = alignmentNoChaos;
+    }
     else
+    {
         document.getElementById("alignmentWarning").innerHTML = "";
+        document.getElementById("alignmentForm").innerHTML = alignmentOn;
+    }
 
     activatePrimePluses(charClass);
 
@@ -261,7 +283,8 @@ function adjustAbilityScorePlus(abilityPlus)
 
 function adjustAbilityScoreMinus(abilityMinus)
 {
-    originalScores = AbilityScores.copy(currentScores);
+    if(originalScores==null)
+        originalScores = AbilityScores.copy(currentScores);
     
     switch(abilityMinus)
     {
