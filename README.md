@@ -1,6 +1,6 @@
 
 
-<img src="logo.png">
+![Logo](Logo.png)
 
 ### [TRY IT HERE](https://hannah-sloan.github.io/DolmenwoodCharacterCreator/)
 
