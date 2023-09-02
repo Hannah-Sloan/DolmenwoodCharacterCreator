@@ -223,7 +223,7 @@ function selectClass(charClass)
     }
     else if(charClass == CharacterClass.Knight)
     {
-        document.getElementById("alignmentWarning").innerHTML = "<p>A knight must have the same Alignment as their liege.</p>"
+        document.getElementById("alignmentWarning").innerHTML = "<p>A knight must have the same Alignment as their liege.</p><p><b>Hospitality</b>: Once knighted (Upon reaching Level 3.), the character can expect hospitality and aid from nobles and other knights of the same Alignment.</p><ul><li>Guilefer: Neutral</li><li>Harrowmoor: Lawful</li><li>Hogwarsh: Neutral</li><li>Malbleat: Chaotic</li><li>Mulbreck: Lawful</li><li>Murkin: Chaotic</li><li>Nodlock: Neutral</li><li>Ramius: Neutral</li></ul>"
         document.getElementById("alignmentForm").innerHTML = alignmentOn;
     }
     else
