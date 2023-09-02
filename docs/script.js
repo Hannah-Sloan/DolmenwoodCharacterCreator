@@ -221,6 +221,11 @@ function selectClass(charClass)
         document.getElementById("alignmentWarning").innerHTML = "<p>As servants of the Church, friars must be Lawful or Neutral.</p>"
         document.getElementById("alignmentForm").innerHTML = alignmentNoChaos;
     }
+    else if(charClass == CharacterClass.Knight)
+    {
+        document.getElementById("alignmentWarning").innerHTML = "<p>A knight must have the same Alignment as their liege.</p>"
+        document.getElementById("alignmentForm").innerHTML = alignmentOn;
+    }
     else
     {
         document.getElementById("alignmentWarning").innerHTML = "";

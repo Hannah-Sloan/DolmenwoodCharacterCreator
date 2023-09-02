@@ -36,20 +36,6 @@
                                     <button disabled id = "strength+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(0)">+</button>
                                 </div>
                                 <div class = abilityScoreDiv>
-                                    <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(1)">-</button>
-                                    <p class="abilityScoreName">Dexterity</p>
-                                    <p id="dexterityAbilityScore" class="abilityScore">--</p>
-                                    <p id ="dexterityMod" class = "mod">--</p>
-                                    <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(1)">+</button>
-                                </div>
-                                <div class = abilityScoreDiv>
-                                    <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(2)">-</button>
-                                    <p class="abilityScoreName">Constitution</p>
-                                    <p id="constitutionAbilityScore" class="abilityScore">--</p>
-                                    <p id ="constitutionMod" class = "mod">--</p>
-                                    <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(2)">+</button>
-                                </div>
-                                <div class = abilityScoreDiv>
                                     <button disabled id = "intelligence-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(3)">-</button>
                                     <p class="abilityScoreName">Intelligence</p>
                                     <p id="intelligenceAbilityScore" class="abilityScore">--</p>
@@ -62,6 +48,20 @@
                                     <p id="wisdomAbilityScore" class="abilityScore">--</p>
                                     <p id ="wisdomMod" class = "mod">--</p>
                                     <button disabled id = "wisdom+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(4)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(1)">-</button>
+                                    <p class="abilityScoreName">Dexterity</p>
+                                    <p id="dexterityAbilityScore" class="abilityScore">--</p>
+                                    <p id ="dexterityMod" class = "mod">--</p>
+                                    <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(1)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(2)">-</button>
+                                    <p class="abilityScoreName">Constitution</p>
+                                    <p id="constitutionAbilityScore" class="abilityScore">--</p>
+                                    <p id ="constitutionMod" class = "mod">--</p>
+                                    <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(2)">+</button>
                                 </div>
                                 <div class = abilityScoreDiv>
                                     <button disabled id = "charisma-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(5)">-</button>
@@ -196,6 +196,8 @@
                         <div class="container">
                             <h2>Choose A Kindred</h2>
                             <p>Kindred is selected based on player preference, although the referee may sometimes wish to limit available options. For example, some referees prefer to restrict Player Characters to mortal Kindreds, or even to humans only.</p>
+                            <h3>Favoured Classes (Optional Rule)</h3>
+                            <p>A favoured Class is listed for each non-human Kindred. Groups wishing to simplify character creation and emphasise the otherworldliness of non-human Kindreds may rule that characters <em>must</em> select the favoured Class listed.</p>
                             <h3>Favour</h3>
                             <ul id="favourList">
                             </ul>
