@@ -4,6 +4,8 @@
 
 ### [TRY IT HERE](https://hannah-sloan.github.io/DolmenwoodCharacterCreator/)
 
+This is a tool to help make characters in the table top roleplaying game, [Dolmenwood](https://necroticgnome.com/collections/dolmenwood). 
+
 ## Features
 
 - Roll ability scores. 3d6 down the line. See each's Ability Modifier.
@@ -14,8 +16,6 @@
 - See each Kindred's 'favorability' with your class. See which Kindreds (if any) are restricted from playing your class.
 
 ## Why?
-
-This is a tool to help make characters in the table top roleplaying game, [Dolmenwood](https://necroticgnome.com/collections/dolmenwood). 
 
 Personally, I found character creation to have one issue. Each Kindred has class preferences, and each Class has Prime Abilities (or "Ability preferences"). When creating characters in the prescribed order:
 
