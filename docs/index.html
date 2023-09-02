@@ -7,298 +7,305 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
+        
+		<meta name="author" content="Hannah Ava Sloan">
         <title>Dolmenwood Character Creator</title>
+        <meta name="keywords" content="character creator, open source, Dolmenwood, dolmenwood, rpg, ttrpg, osr, tool">
+        <meta name="description" content="A tool for creating a novice adventurer, ready to brave the befuddling Dolmenwood. Roll and reroll ability scores, get class reccomendations, adjust and reset your ability scores, choose your alignment, and get kindred reccomendations." >
     </head>
     <body>
-        <div class="pageSplit">
-            <!-- LEFT PAGE -->
-            <div class="container">
-                <h1>Dolmenwood Character Creator</h1>
-                <hr>
-                <div class="pageSplit">
-                    <div class="container">
-                        <h2>Roll Ability Scores</h2>
-                        <button type="button" onclick="rollAbilityScores()">Roll Ability Scores</button><p></p>
-                        <button disabled id = "reset" type="button" onclick="resetAdjustAbilityScores()">reset</button>
-                        <div id="abilityScoreTool"> 
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "strength-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(0)">-</button>
-                                <p class="abilityScoreName">Strength</p>
-                                <p id="strengthAbilityScore" class="abilityScore">--</p>
-                                <p id ="strengthMod" class = "mod">--</p>
-                                <button disabled id = "strength+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(0)">+</button>
+        <p><a href="https://github.com/Hannah-Sloan/DolmenwoodCharacterCreator">GITHUB</a>
+        <main>
+
+            <div class="pageSplit">
+                <!-- LEFT PAGE -->
+                <div class="container">
+                    <h1>Dolmenwood Character Creator</h1>
+                    <hr>
+                    <div class="pageSplit">
+                        <div class="container">
+                            <h2>Roll Ability Scores</h2>
+                            <button type="button" onclick="rollAbilityScores()">Roll Ability Scores</button><p></p>
+                            <button disabled id = "reset" type="button" onclick="resetAdjustAbilityScores()">reset</button>
+                            <div id="abilityScoreTool"> 
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "strength-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(0)">-</button>
+                                    <p class="abilityScoreName">Strength</p>
+                                    <p id="strengthAbilityScore" class="abilityScore">--</p>
+                                    <p id ="strengthMod" class = "mod">--</p>
+                                    <button disabled id = "strength+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(0)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(1)">-</button>
+                                    <p class="abilityScoreName">Dexterity</p>
+                                    <p id="dexterityAbilityScore" class="abilityScore">--</p>
+                                    <p id ="dexterityMod" class = "mod">--</p>
+                                    <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(1)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(2)">-</button>
+                                    <p class="abilityScoreName">Constitution</p>
+                                    <p id="constitutionAbilityScore" class="abilityScore">--</p>
+                                    <p id ="constitutionMod" class = "mod">--</p>
+                                    <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(2)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "intelligence-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(3)">-</button>
+                                    <p class="abilityScoreName">Intelligence</p>
+                                    <p id="intelligenceAbilityScore" class="abilityScore">--</p>
+                                    <p id ="intelligenceMod" class = "mod">--</p>
+                                    <button disabled id = "intelligence+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(3)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "wisdom-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(4)">-</button>
+                                    <p class="abilityScoreName">Wisdom</p>
+                                    <p id="wisdomAbilityScore" class="abilityScore">--</p>
+                                    <p id ="wisdomMod" class = "mod">--</p>
+                                    <button disabled id = "wisdom+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(4)">+</button>
+                                </div>
+                                <div class = abilityScoreDiv>
+                                    <button disabled id = "charisma-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(5)">-</button>
+                                    <p class="abilityScoreName">Charisma</p>
+                                    <p id="charismaAbilityScore" class="abilityScore">--</p>
+                                    <p id ="charismaMod" class = "mod">--</p>
+                                    <button disabled id = "charisma+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(5)">+</button>
+                                </div>
                             </div>
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "dexterity-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(1)">-</button>
-                                <p class="abilityScoreName">Dexterity</p>
-                                <p id="dexterityAbilityScore" class="abilityScore">--</p>
-                                <p id ="dexterityMod" class = "mod">--</p>
-                                <button disabled id = "dexterity+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(1)">+</button>
-                            </div>
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "constitution-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(2)">-</button>
-                                <p class="abilityScoreName">Constitution</p>
-                                <p id="constitutionAbilityScore" class="abilityScore">--</p>
-                                <p id ="constitutionMod" class = "mod">--</p>
-                                <button disabled id = "constitution+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(2)">+</button>
-                            </div>
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "intelligence-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(3)">-</button>
-                                <p class="abilityScoreName">Intelligence</p>
-                                <p id="intelligenceAbilityScore" class="abilityScore">--</p>
-                                <p id ="intelligenceMod" class = "mod">--</p>
-                                <button disabled id = "intelligence+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(3)">+</button>
-                            </div>
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "wisdom-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(4)">-</button>
-                                <p class="abilityScoreName">Wisdom</p>
-                                <p id="wisdomAbilityScore" class="abilityScore">--</p>
-                                <p id ="wisdomMod" class = "mod">--</p>
-                                <button disabled id = "wisdom+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(4)">+</button>
-                            </div>
-                            <div class = abilityScoreDiv>
-                                <button disabled id = "charisma-" class="adjustAbilityButton" type="button" onclick="adjustAbilityScoreMinus(5)">-</button>
-                                <p class="abilityScoreName">Charisma</p>
-                                <p id="charismaAbilityScore" class="abilityScore">--</p>
-                                <p id ="charismaMod" class = "mod">--</p>
-                                <button disabled id = "charisma+" class="adjustAbilityButton" type="button" onclick="adjustAbilityScorePlus(5)">+</button>
-                            </div>
+                            <h3 id = "subparCharacters">Subpar Characters (Optional Rule) <button disabled type="button" onclick="rollAbilityScores()">Reroll</button></h3>
+                            <p>If you roll a character with an 8 or less in every ability score or a 6 or lower in more 
+                                than one Ability Score, you may choose to discard the character and start again</p>
+                            <h2>Adjust Ability Scores</h2>
+                            <p>If you wish, you may raise your character's Prime Abilities by lowering other (non-Prime) 
+                                Ability Scores. For every 2 points by which an Ability Score is lowered, 
+                                1 point may be added to a Prime Ability. No Ability Score may be lowered below 9.</p>
+                            <table>
+                                <caption> Ability Modifiers </caption>
+                                <tr>
+                                  <th>Ability Score</th>
+                                  <th>Modifier</th>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>-3</td>
+                                </tr>
+                                <tr>
+                                  <td>4-5</td>
+                                  <td>-2</td>
+                                </tr>
+                                <tr>
+                                    <td>6-8</td>
+                                    <td>-1</td>
+                                </tr>
+                                <tr>
+                                    <td>9-12</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>13-15</td>
+                                    <td>+1</td>
+                                </tr>
+                                <tr>
+                                    <td>16-17</td>
+                                    <td>+2</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>+3</td>
+                                </tr>
+                              </table> 
                         </div>
-                        <h3 id = "subparCharacters">Subpar Characters (Optional Rule) <button disabled type="button" onclick="rollAbilityScores()">Reroll</button></h3>
-                        <p>If you roll a character with an 8 or less in every ability score or a 6 or lower in more 
-                            than one Ability Score, you may choose to discard the character and start again</p>
-                        <h2>Adjust Ability Scores</h2>
-                        <p>If you wish, you may raise your character's Prime Abilities by lowering other (non-Prime) 
-                            Ability Scores. For every 2 points by which an Ability Score is lowered, 
-                            1 point may be added to a Prime Ability. No Ability Score may be lowered below 9.</p>
-                        <table>
-                            <caption> Ability Modifiers </caption>
-                            <tr>
-                              <th>Ability Score</th>
-                              <th>Modifier</th>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td>-3</td>
-                            </tr>
-                            <tr>
-                              <td>4-5</td>
-                              <td>-2</td>
-                            </tr>
-                            <tr>
-                                <td>6-8</td>
-                                <td>-1</td>
-                            </tr>
-                            <tr>
-                                <td>9-12</td>
-                                <td>None</td>
-                            </tr>
-                            <tr>
-                                <td>13-15</td>
-                                <td>+1</td>
-                            </tr>
-                            <tr>
-                                <td>16-17</td>
-                                <td>+2</td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>+3</td>
-                            </tr>
-                          </table> 
-                    </div>
-                    <div class="container">
-                        <h2>Choose a Class</h2>
-                        <h3>+10% XP Bonus</h3>
-                        <ul id= "+10xpList">
-                        </ul> 
-                        <h3>+5% XP Bonus</h3>
-                        <ul id = "+5xpList">
-                        </ul> 
-                        <h3>No Bonus or Penalty</h3>
-                        <ul id = "0xpList">
-                        </ul>
-                        <h3>-10% XP Penalty</h3>
-                        <ul id = "-10xpList">
-                        </ul>
-                    <h2>Choose Alignment</h2>
-                    <form id="alignmentForm">
-
-                    </form>
-                    <p id="alignmentWarning"></p>
+                        <div class="container">
+                            <h2>Choose a Class</h2>
+                            <h3>+10% XP Bonus</h3>
+                            <ul id= "+10xpList">
+                            </ul> 
+                            <h3>+5% XP Bonus</h3>
+                            <ul id = "+5xpList">
+                            </ul> 
+                            <h3>No Bonus or Penalty</h3>
+                            <ul id = "0xpList">
+                            </ul>
+                            <h3>-10% XP Penalty</h3>
+                            <ul id = "-10xpList">
+                            </ul>
+                        <h2>Choose Alignment</h2>
+                        <form id="alignmentForm">
+    
+                        </form>
+                        <p id="alignmentWarning"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- RIGHT PAGE -->
-            <div class="container">
-                <div class="pageSplit">
-                    <div class="container">
-                        <h2>Prime Abilities</h2>
-                        <p>Each Class has one or more Prime Abilities of special importance to its function.
-                            For example, fighters rely on Strength and magicians rely on Intelligence. 
-                            A character's score in their Prime Abilities affects how quickly they gain Experience Points.<br>
-                            <b>Below 9:</b> A character who has 8 or lower in a Prime Ability suffers a -10% penalty to earned XP.<br>
-                            <b>Above 12:</b> A character who has 13 or higher in all Prime Abilities gains a +5% bonus to earned XP. <br>
-                            <b>Above 15:</b> If all Prime Abilities are 16 or higher, the character gains a +10% bonus to earned XP.
-                        </p>
-                        <table>
-                            <caption> Class Prime Abilities </caption>
-                            <tr>
-                              <th>Class</th>
-                              <th>Prime Abilities</th>
-                            </tr>
-                            <tr>
-                              <td>Cleric</td>
-                              <td>Wisdom</td>
-                            </tr>
-                            <tr>
-                              <td>Enchanter</td>
-                              <td>Charisma and Intelligence</td>
-                            </tr>
-                            <tr>
-                                <td>Fighter</td>
-                                <td>Strength</td>
-                            </tr>
-                            <tr>
-                                <td>Friar</td>
-                                <td>Intelligence and Wisdom</td>
-                            </tr>
-                            <tr>
-                                <td>Hunter</td>
-                                <td>Constitution and Dexterity</td>
-                            </tr>
-                            <tr>
-                                <td>Knight</td>
-                                <td>Charisma and Strength</td>
-                            </tr>
-                            <tr>
-                                <td>Magician</td>
-                                <td>Intelligence</td>
-                            </tr>
-                            <tr>
-                                <td>Minstrel</td>
-                                <td>Charisma and Dexterity</td>
-                            </tr>
-                            <tr>
-                                <td>Thief</td>
-                                <td>Dexterity</td>
-                            </tr>
-                          </table> 
+    
+                <!-- RIGHT PAGE -->
+                <div class="container">
+                    <div class="pageSplit">
+                        <div class="container">
+                            <h2>Prime Abilities</h2>
+                            <p>Each Class has one or more Prime Abilities of special importance to its function.
+                                For example, fighters rely on Strength and magicians rely on Intelligence. 
+                                A character's score in their Prime Abilities affects how quickly they gain Experience Points.<br>
+                                <b>Below 9:</b> A character who has 8 or lower in a Prime Ability suffers a -10% penalty to earned XP.<br>
+                                <b>Above 12:</b> A character who has 13 or higher in all Prime Abilities gains a +5% bonus to earned XP. <br>
+                                <b>Above 15:</b> If all Prime Abilities are 16 or higher, the character gains a +10% bonus to earned XP.
+                            </p>
+                            <table>
+                                <caption> Class Prime Abilities </caption>
+                                <tr>
+                                  <th>Class</th>
+                                  <th>Prime Abilities</th>
+                                </tr>
+                                <tr>
+                                  <td>Cleric</td>
+                                  <td>Wisdom</td>
+                                </tr>
+                                <tr>
+                                  <td>Enchanter</td>
+                                  <td>Charisma and Intelligence</td>
+                                </tr>
+                                <tr>
+                                    <td>Fighter</td>
+                                    <td>Strength</td>
+                                </tr>
+                                <tr>
+                                    <td>Friar</td>
+                                    <td>Intelligence and Wisdom</td>
+                                </tr>
+                                <tr>
+                                    <td>Hunter</td>
+                                    <td>Constitution and Dexterity</td>
+                                </tr>
+                                <tr>
+                                    <td>Knight</td>
+                                    <td>Charisma and Strength</td>
+                                </tr>
+                                <tr>
+                                    <td>Magician</td>
+                                    <td>Intelligence</td>
+                                </tr>
+                                <tr>
+                                    <td>Minstrel</td>
+                                    <td>Charisma and Dexterity</td>
+                                </tr>
+                                <tr>
+                                    <td>Thief</td>
+                                    <td>Dexterity</td>
+                                </tr>
+                              </table> 
+                        </div>
+                        <div class="container">
+                            <h2>Choose A Kindred</h2>
+                            <p>Kindred is selected based on player preference, although the referee may sometimes wish to limit available options. For example, some referees prefer to restrict Player Characters to mortal Kindreds, or even to humans only.</p>
+                            <h3>Favour</h3>
+                            <ul id="favourList">
+                            </ul>
+                            <h3>Commonly</h3>
+                            <ul id="commonlyList">
+                            </ul>
+                            <h3>Yes</h3>
+                            <ul id="yesList">
+                            </ul>
+                            <h3>Occasionally</h3>
+                            <ul id="occasionallyList">
+                            </ul>
+                            <h3>Rarely</h3>
+                            <ul id="rarelyList">
+                            </ul>
+                            <h3>Never</h3>
+                            <ul id="neverList">
+                            </ul>
+                        </div>
                     </div>
-                    <div class="container">
-                        <h2>Choose A Kindred</h2>
-                        <p>Kindred is selected based on player preference, although the referee may sometimes wish to limit available options. For example, some referees prefer to restrict Player Characters to mortal Kindreds, or even to humans only.</p>
-                        <h3>Favour</h3>
-                        <ul id="favourList">
-                        </ul>
-                        <h3>Commonly</h3>
-                        <ul id="commonlyList">
-                        </ul>
-                        <h3>Yes</h3>
-                        <ul id="yesList">
-                        </ul>
-                        <h3>Occasionally</h3>
-                        <ul id="occasionallyList">
-                        </ul>
-                        <h3>Rarely</h3>
-                        <ul id="rarelyList">
-                        </ul>
-                        <h3>Never</h3>
-                        <ul id="neverList">
-                        </ul>
-                    </div>
+                    <table>
+                        <caption> Kindred Class Favour </caption>
+                        <tr>
+                          <th></th>
+                          <th>Cleric</th>
+                          <th>Enchanter</th>
+                          <th>Fighter</th>
+                          <th>Friar</th>
+                          <th>Hunter</th>
+                          <th>Knight</th>
+                          <th>Magician</th>
+                          <th>Minstrel</th>
+                          <th>Thief</th>
+                        </tr>
+                        <tr>
+                          <th>Breggle</th>
+                          <td>Occasionally</td>
+                          <td>Occasionally</td>
+                          <td>Commonly</td>
+                          <td>Occasionally</td>
+                          <td>Yes</td>
+                          <td>Favour</td>
+                          <td>Commonly</td>
+                          <td>Yes</td>
+                          <td>Yes</td>
+                        </tr>
+                        <tr>
+                        <th>Elf</th>
+                        <td>Never</td>
+                        <td>Favour</td>
+                        <td>Commonly</td>
+                        <td>Never</td>
+                        <td>Commonly</td>
+                        <td>Never</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th>Grimalkin</th>
+                            <td>Never</td>
+                            <td>Commonly</td>
+                            <td>Yes</td>
+                            <td>Never</td>
+                            <td>Commonly</td>
+                            <td>Never</td>
+                            <td>Yes</td>
+                            <td>Commonly</td>
+                            <td>Favour</td>
+                        </tr>
+                        <tr>
+                            <th>Human</th>
+                            <td>Favour</td>
+                            <td>Rarely</td>
+                            <td>Yes</td>
+                            <td>Favour</td>
+                            <td>Yes</td>
+                            <td>Favour</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th>Mossling</th>
+                            <td>Occasionally</td>
+                            <td>Rarely</td>
+                            <td>Commonly</td>
+                            <td>Occasionally</td>
+                            <td>Favour</td>
+                            <td>Yes</td>
+                            <td>Rarely</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <th>Woodgrue</th>
+                            <td>Never</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Never</td>
+                            <td>Yes</td>
+                            <td>Never</td>
+                            <td>Commonly</td>
+                            <td>Favour</td>
+                            <td>Commonly</td>
+                        </tr>
+                      </table> 
                 </div>
-                <table>
-                    <caption> Kindred Class Favour </caption>
-                    <tr>
-                      <th></th>
-                      <th>Cleric</th>
-                      <th>Enchanter</th>
-                      <th>Fighter</th>
-                      <th>Friar</th>
-                      <th>Hunter</th>
-                      <th>Knight</th>
-                      <th>Magician</th>
-                      <th>Minstrel</th>
-                      <th>Thief</th>
-                    </tr>
-                    <tr>
-                      <th>Breggle</th>
-                      <td>Occasionally</td>
-                      <td>Occasionally</td>
-                      <td>Commonly</td>
-                      <td>Occasionally</td>
-                      <td>Yes</td>
-                      <td>Favour</td>
-                      <td>Commonly</td>
-                      <td>Yes</td>
-                      <td>Yes</td>
-                    </tr>
-                    <tr>
-                    <th>Elf</th>
-                    <td>Never</td>
-                    <td>Favour</td>
-                    <td>Commonly</td>
-                    <td>Never</td>
-                    <td>Commonly</td>
-                    <td>Never</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <th>Grimalkin</th>
-                        <td>Never</td>
-                        <td>Commonly</td>
-                        <td>Yes</td>
-                        <td>Never</td>
-                        <td>Commonly</td>
-                        <td>Never</td>
-                        <td>Yes</td>
-                        <td>Commonly</td>
-                        <td>Favour</td>
-                    </tr>
-                    <tr>
-                        <th>Human</th>
-                        <td>Favour</td>
-                        <td>Rarely</td>
-                        <td>Yes</td>
-                        <td>Favour</td>
-                        <td>Yes</td>
-                        <td>Favour</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <th>Mossling</th>
-                        <td>Occasionally</td>
-                        <td>Rarely</td>
-                        <td>Commonly</td>
-                        <td>Occasionally</td>
-                        <td>Favour</td>
-                        <td>Yes</td>
-                        <td>Rarely</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <th>Woodgrue</th>
-                        <td>Never</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
-                        <td>Never</td>
-                        <td>Yes</td>
-                        <td>Never</td>
-                        <td>Commonly</td>
-                        <td>Favour</td>
-                        <td>Commonly</td>
-                    </tr>
-                  </table> 
             </div>
-        </div>
+        </main>
     </body>
     <script src="script.js"></script>
 </html>
