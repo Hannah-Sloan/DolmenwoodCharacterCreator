@@ -145,6 +145,12 @@ document.getElementById("reset").disabled = true;
 
 function rollAbilityScores()
 {
+    resetAdjustAbilityScores();
+    //Disable all + buttons
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    { 
+        document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "+").disabled = true; 
+    }
     var scores = new AbilityScores(roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6(), roll3d6());
     currentScores = scores;
     originalScores = null;
