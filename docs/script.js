@@ -206,6 +206,11 @@ function selectClass(charClass)
 
 function activatePrimePluses(charClass)
 {
+    //Disable all + buttons
+    for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
+    { 
+        document.getElementById(AbilityScores.abilityScoreName(ability).toLowerCase() + "+").disabled = true; 
+    }
     let primeAbilitiesArray = primeAbilities(charClass);
     let eligibleAbilities = [];
     for (let ability = 0; ability < AbilityScores.AbilityScoresCount; ability++) 
