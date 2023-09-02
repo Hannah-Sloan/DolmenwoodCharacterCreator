@@ -21,7 +21,7 @@ Personally, I found character creation to have one issue. Each Kindred has class
 
 ​	*(Ability Scores -> Kindred -> Class)*
 
-It is often impossible to pick one class that satisfies your Ability Scores and your Kindred. Furthermore, the extent to which Prime Abilities essential to a class may be unknown to a new play unfamiliar with Dolmenwood. 
+It is often impossible to pick one class that satisfies your Ability Scores and your Kindred. Furthermore, the extent to which Prime Abilities are essential to a class may be unknown to a new play unfamiliar with Dolmenwood. 
 
 This tool attempts to bring relevant information forward, dynamically, when you need it. There's no way to make a Chaotic Friar Grimalkin - a completely restricted alignment-class-race combination. I reorder character creation as follows:
 
