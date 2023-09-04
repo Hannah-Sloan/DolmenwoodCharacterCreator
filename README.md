@@ -21,7 +21,7 @@ Personally, I found character creation to have one issue. Each Kindred has class
 
 ​	*(Ability Scores -> Kindred -> Class)*
 
-It is often impossible to pick one class that satisfies your Ability Scores and your Kindred. Furthermore, the extent to which Prime Abilities are essential to a class may be unknown to a new play unfamiliar with Dolmenwood. 
+It is often impossible to pick one class that satisfies your Ability Scores and your Kindred. 
 
 This tool attempts to bring relevant information forward, dynamically, when you need it. There's no way to make a Chaotic Friar Grimalkin - a completely restricted alignment-class-race combination. I reorder character creation as follows:
 
@@ -31,13 +31,15 @@ This way your ability scores (which you get little choice in) inform your class 
 
 However, the class preferences of each Kindred are not easy to reference *by class*. You must check each Kindred's 'Choosing A Class' entry and look to see if it references your chosen class. This tool automates that process as well. Allowing you to quickly reference each Kindred's 'favorability' with a chosen class.
 
+In all honesty, selecting a 'subpar' ability score-class combination is not an issue player's really need to be concerned with. Therefore choosing a kindred and letting it inform your class decision is perfectly reasonable approach to character creation. Coming from dnd 5e this was a little hard to grasp. This project helped me explore Dolmenwood's approach to character creation and hopefully it will help you create a novice adventurer, ready to brave the befuddling Dolmenwood.
+
 ## Is this Official?
 
 No. I am no way associated with Dolmenwood or it's creators. 
 
-It should be noted that the fonts, colors, layout, and design is heavily... "inspired" by the official books. 
+It should be noted that the fonts, colors, layout, and design is heavily... "inspired" by the official books. The text and rules are likewise... "borrowed". This tool should not be a substitute of the books 
 
-At the time of writing the Dolmenwood is still in its crowdfunding stage. This tool is based on information found in the 'Dolmenwood Preview' pdf and the  unfinished material released to patreon supporters. As such all the information is subject to change. 
+At the time of writing the Dolmenwood is still in its crowdfunding stage. This tool is based on information found in the 'Dolmenwood Preview' pdf and the unfinished material released to patreon supporters. As such all the information is subject to change. 
 
 ## Help Me
 
