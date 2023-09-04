@@ -127,6 +127,32 @@ class CharacterClass
     }
 }
 
+class Kindred
+{
+    static KindredCount = 6;
+
+    static Breggle      = 0;
+    static Elf          = 1;
+    static Grimalkin    = 2;
+    static Human        = 3;
+    static Mossling     = 4;
+    static Woodgrue     = 5;
+
+    static kindredName(i)
+    {
+        switch(i)
+        {
+            case 0: return 'Breggle';
+            case 1: return 'Elf';
+            case 2: return 'Grimalkin';
+            case 3: return 'Human';
+            case 4: return 'Mossling';
+            case 5: return 'Woodgrue';
+        }
+        return '';
+    }
+}
+
 let kindredMode = false;
 let currentCharClass = -1;
 let currentScores = null;
@@ -180,6 +206,7 @@ function rollAbilityScores()
         document.getElementById("subparCharacters").innerHTML = "Subpar Characters (Optional Rule) <button disabled type=\"button\" onclick=\"rollAbilityScores()\">Reroll</button>";
 
     populateClasses(scores);
+    clearKindredList();
 }
 
 defaultBorderStyle = "";
@@ -471,12 +498,73 @@ function populateXPList(id, list)
 
 function populateKindred() 
 {
-    document.getElementById("favourList").innerHTML = "<li>Grimalkin - Faery</li><li>Grimalkin - Faery</li>";
-    document.getElementById("commonlyList").innerHTML = "<li>Woodgrue - Demi-fey</li><li>Woodgrue - Demi-fey</li>";
-    document.getElementById("yesList").innerHTML = "<li>Human</li><li>Human</li>";
-    document.getElementById("occasionallyList").innerHTML = "<li>Breggle - Non-human mortal</li><li>Breggle - Non-human mortal</li>";
-    document.getElementById("rarelyList").innerHTML = "<li>Elf - Faery</li><li>Elf - Faery</li>";
-    document.getElementById("neverList").innerHTML = "<li>Mossling - Non-human mortal</li><li>Mossling - Non-human mortal</li>";
+    let favourList = [];
+    let commonlyList = [];
+    let yesList = [];
+    let occasionallyList = [];
+    let rarelyList = [];
+    let neverList = [];
+
+    for (let kindred = 0; kindred < Kindred.KindredCount; kindred++) 
+    {
+        switch (kindredClassFavour[kindred][currentCharClass]) 
+        {
+            case 0:
+                favourList.push(kindred);
+                break;
+            case 1:
+                commonlyList.push(kindred);
+                break;
+            case 2:
+                yesList.push(kindred);
+                break;
+            case 3:
+                occasionallyList.push(kindred);
+                break;
+            case 4:
+                rarelyList.push(kindred);
+                break;
+            case 5:
+                neverList.push(kindred);
+                break;
+        }
+    }
+
+    populateKindredList("favourList", favourList);
+    populateKindredList("commonlyList", commonlyList);
+    populateKindredList("yesList", yesList);
+    populateKindredList("occasionallyList", occasionallyList);
+    populateKindredList("rarelyList", rarelyList);
+    populateKindredList("neverList", neverList);
+
+    // document.getElementById("favourList").innerHTML = "<li>Grimalkin - Faery</li><li>Grimalkin - Faery</li>";
+    // document.getElementById("commonlyList").innerHTML = "<li>Woodgrue - Demi-fey</li><li>Woodgrue - Demi-fey</li>";
+    // document.getElementById("yesList").innerHTML = "<li>Human</li><li>Human</li>";
+    // document.getElementById("occasionallyList").innerHTML = "<li>Breggle - Non-human mortal</li><li>Breggle - Non-human mortal</li>";
+    // document.getElementById("rarelyList").innerHTML = "<li>Elf - Faery</li><li>Elf - Faery</li>";
+    // document.getElementById("neverList").innerHTML = "<li>Mossling - Non-human mortal</li><li>Mossling - Non-human mortal</li>";
+}
+
+function populateKindredList(id, list)
+{
+    let listString = "";
+    
+    for (let i = 0; i < list.length; i++)
+    {
+        let kindred = list[i];
+        listString += "<li>" + Kindred.kindredName(kindred) + "</li>";
+    }
+    document.getElementById(id).innerHTML = listString;
+}
+
+function clearKindredList()
+{    
+    document.getElementById("favourList").innerHTML = "";
+    document.getElementById("commonlyList").innerHTML = "";
+    document.getElementById("yesList").innerHTML = "";
+    document.getElementById("occasionallyList").innerHTML = "";
+    document.getElementById("rarelyList").innerHTML = "";
+    document.getElementById("neverList").innerHTML = "";
 }
 
 function roll3d6()
@@ -498,6 +586,16 @@ function getRndInteger(min, max)
 {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
+
+let kindredClassFavour = 
+[
+    /*Breggle*/     [3,3,1,3,2,0,1,2,2],
+    /*Elf*/         [5,0,1,5,1,5,2,2,2],
+    /*Grimalkin*/   [5,1,2,5,1,5,2,2,2],
+    /*Human*/       [1,4,1,1,1,1,1,1,1],
+    /*Mossling*/    [3,4,1,3,0,2,4,2,2],
+    /*Woodgrue*/    [5,2,2,5,2,5,1,0,1]
+]
 
 function primeAbilities(lookupClass)
 {
