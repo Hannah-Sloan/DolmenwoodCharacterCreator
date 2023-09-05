@@ -281,7 +281,8 @@ function activatePrimePluses(charClass)
     {
         for (let i = 0; i < primeAbilitiesArray.length; i++) 
         {
-            document.getElementById(AbilityScores.abilityScoreName(primeAbilitiesArray[i]).toLowerCase() + "+").disabled = false; 
+            if(currentScores.abilityScore(primeAbilitiesArray[i]) < 18)
+                document.getElementById(AbilityScores.abilityScoreName(primeAbilitiesArray[i]).toLowerCase() + "+").disabled = false; 
         }
     }
 }
